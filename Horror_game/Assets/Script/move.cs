@@ -4,8 +4,7 @@ public class move : MonoBehaviour
 {
     private Rigidbody rb;
     public float speed = 5f;
-    private bool isMoving; // Флаг для руху
-
+    private bool isMoving;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -19,16 +18,17 @@ public class move : MonoBehaviour
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
-            rb.MovePosition(rb.position + transform.forward * speed * Time.fixedDeltaTime); // 🚀 Рух вперед відносно повороту
+            rb.MovePosition(rb.position + transform.forward * speed * Time.fixedDeltaTime);
 
         if (Input.GetKey(KeyCode.A))
-            rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up * -100f * Time.fixedDeltaTime)); // 🔄 Обертання вліво
+            rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up * -100f * Time.fixedDeltaTime)); 
 
         if (Input.GetKey(KeyCode.D))
-            rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up * 100f * Time.fixedDeltaTime)); // 🔄 Обертання вправо
+            rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up * 100f * Time.fixedDeltaTime)); 
 
         if (Input.GetKey(KeyCode.S))
-            rb.MovePosition(rb.position - transform.forward * speed * Time.fixedDeltaTime); // 🔙 Рух назад відносно об'єкта
+            rb.MovePosition(rb.position - transform.forward * speed * Time.fixedDeltaTime); 
     }
+    
 
 }
