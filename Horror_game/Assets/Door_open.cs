@@ -13,21 +13,22 @@ public class Door_open : MonoBehaviour
     // Метод для програвання першого звуку
     public void PlayFirstSound()
     {
-        if (!firstSoundPlayed)
-        {
+
             audioSource.clip = firstSound;
             audioSource.Play();
-            firstSoundPlayed = true;
-        }
     }
 
     // Метод для програвання другого звуку
     public void PlaySecondSound()
     {
-        if (firstSoundPlayed) // Переконайся, що перший звук програвся
-        {
             audioSource.clip = secondSound;
             audioSource.Play();
-        }
+        StartCoroutine(ClearAudioClipAfterPlay(secondSound.length));
+    }
+    // Метод для скидання audioSource.clip після програвання
+    private System.Collections.IEnumerator ClearAudioClipAfterPlay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioSource.clip = null;
     }
 }
