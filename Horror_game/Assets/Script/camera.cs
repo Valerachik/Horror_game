@@ -12,7 +12,7 @@ public class сamera : MonoBehaviour
     {
         if (target == null) return;
 
-        Vector3 desiredPosition = target.position + target.TransformDirection(offset);
+        Vector3 desiredPosition = target.position + offset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, speed * Time.deltaTime);
         transform.LookAt(target.position + Vector3.up * 2); 
     }
