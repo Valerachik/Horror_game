@@ -21,10 +21,10 @@ public class move : MonoBehaviour
             rb.MovePosition(rb.position + transform.forward * speed * Time.fixedDeltaTime);
 
         if (Input.GetKey(KeyCode.A))
-            rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up * -100f * Time.fixedDeltaTime)); 
+            rb.MovePosition(rb.position - transform.right * speed * Time.fixedDeltaTime);
 
         if (Input.GetKey(KeyCode.D))
-            rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up * 100f * Time.fixedDeltaTime)); 
+            rb.MovePosition(rb.position + transform.right * speed * Time.fixedDeltaTime); 
 
         if (Input.GetKey(KeyCode.S))
             rb.MovePosition(rb.position - transform.forward * speed * Time.fixedDeltaTime); 
