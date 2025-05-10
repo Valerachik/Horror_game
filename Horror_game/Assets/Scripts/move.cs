@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class move : MonoBehaviour
@@ -5,6 +6,12 @@ public class move : MonoBehaviour
     private Rigidbody rb;
     public float speed = 5f;
     private bool isMoving;
+    PhotonView view;
+
+    void Start()
+    {
+        view = GetComponent<PhotonView>();
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -17,16 +24,16 @@ public class move : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && view.IsMine)
             rb.MovePosition(rb.position + transform.forward * speed * Time.fixedDeltaTime);
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && view.IsMine)
             rb.MovePosition(rb.position - transform.right * speed * Time.fixedDeltaTime);
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && view.IsMine)
             rb.MovePosition(rb.position + transform.right * speed * Time.fixedDeltaTime); 
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && view.IsMine)
             rb.MovePosition(rb.position - transform.forward * speed * Time.fixedDeltaTime); 
     }
     
