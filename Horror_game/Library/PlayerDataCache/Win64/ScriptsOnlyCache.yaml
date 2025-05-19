@@ -10,6 +10,7 @@ ScriptsOnlyBuild:
     - FirstPersonController
     - MainMenu
     - MouseLook
+    - NetworkConnector
     - NewBehaviourScript
     - Settings
     - SojaExiles.BRGlassDoor
@@ -52,6 +53,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
     - UnityEngine.UI.Mask
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
@@ -72,6 +74,9 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Dropdown/OptionData
     - UnityEngine.UI.Dropdown/OptionDataList
     - UnityEngine.UI.FontData
+    - UnityEngine.UI.InputField/EndEditEvent
+    - UnityEngine.UI.InputField/OnChangeEvent
+    - UnityEngine.UI.InputField/SubmitEvent
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
     - UnityEngine.UI.ScrollRect/ScrollRectEvent
@@ -118,9 +123,9 @@ ScriptsOnlyBuild:
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
-  - assembly: Mirror
-    fullTypeName: Mirror.NetworkManager
-    methodName: StartClient
+  - assembly: Assembly-CSharp
+    fullTypeName: NetworkConnector
+    methodName: ConnectToServer
   - assembly: Mirror
     fullTypeName: Mirror.NetworkManager
     methodName: StartHost
@@ -172,13 +177,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5062}
     - Class: 114
-      Script: {instanceID: 8242}
+      Script: {instanceID: 8244}
     - Class: 114
-      Script: {instanceID: 9212}
+      Script: {instanceID: 9214}
     - Class: 114
-      Script: {instanceID: 10458}
+      Script: {instanceID: 10460}
     - Class: 114
-      Script: {instanceID: 10844}
+      Script: {instanceID: 10846}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 137
@@ -251,13 +256,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5326}
     - Class: 114
-      Script: {instanceID: 8242}
+      Script: {instanceID: 8244}
     - Class: 114
-      Script: {instanceID: 9212}
+      Script: {instanceID: 9214}
     - Class: 114
-      Script: {instanceID: 10458}
+      Script: {instanceID: 10460}
     - Class: 114
-      Script: {instanceID: 10844}
+      Script: {instanceID: 10846}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 136
@@ -348,6 +353,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3516}
     - Class: 114
+      Script: {instanceID: 3590}
+    - Class: 114
       Script: {instanceID: 4116}
     - Class: 114
       Script: {instanceID: 4378}
@@ -358,27 +365,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5326}
     - Class: 114
-      Script: {instanceID: 5880}
+      Script: {instanceID: 5874}
     - Class: 114
-      Script: {instanceID: 6626}
+      Script: {instanceID: 5882}
     - Class: 114
-      Script: {instanceID: 6820}
+      Script: {instanceID: 6628}
     - Class: 114
-      Script: {instanceID: 6856}
+      Script: {instanceID: 6822}
     - Class: 114
-      Script: {instanceID: 6892}
+      Script: {instanceID: 6858}
     - Class: 114
-      Script: {instanceID: 8760}
+      Script: {instanceID: 6894}
     - Class: 114
-      Script: {instanceID: 8776}
+      Script: {instanceID: 8762}
     - Class: 114
-      Script: {instanceID: 9626}
+      Script: {instanceID: 8778}
     - Class: 114
-      Script: {instanceID: 9704}
+      Script: {instanceID: 9628}
     - Class: 114
-      Script: {instanceID: 10028}
+      Script: {instanceID: 9706}
     - Class: 114
-      Script: {instanceID: 10504}
+      Script: {instanceID: 10030}
+    - Class: 114
+      Script: {instanceID: 10506}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1434,6 +1443,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Components
     namespaceName: Mirror
     className: NetworkDiagnosticsDebugger
+  - hash:
+      serializedVersion: 2
+      Hash: b187b9579122b4827085ca5e4c2810aa
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: NetworkConnector
   - hash:
       serializedVersion: 2
       Hash: 63d4049d2e22f16ffbcdd0082d83f0c5
