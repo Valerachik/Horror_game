@@ -1,4 +1,3 @@
-using Photon.Pun;
 using UnityEngine;
 
 public class move_alone : MonoBehaviour

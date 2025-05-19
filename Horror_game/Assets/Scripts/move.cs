@@ -1,17 +1,12 @@
-using Photon.Pun;
 using UnityEngine;
+using Mirror;
 
-public class move : MonoBehaviour
+public class move : NetworkBehaviour
 {
     private Rigidbody rb;
     public float speed = 5f;
     private bool isMoving;
-    PhotonView view;
-
-    void Start()
-    {
-        view = GetComponent<PhotonView>();
-    }
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,16 +19,17 @@ public class move : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W) && view.IsMine)
+        if (!isLocalPlayer) return;
+        if (Input.GetKey(KeyCode.W))
             rb.MovePosition(rb.position + transform.forward * speed * Time.fixedDeltaTime);
 
-        if (Input.GetKey(KeyCode.A) && view.IsMine)
+        if (Input.GetKey(KeyCode.A))
             rb.MovePosition(rb.position - transform.right * speed * Time.fixedDeltaTime);
 
-        if (Input.GetKey(KeyCode.D) && view.IsMine)
+        if (Input.GetKey(KeyCode.D))
             rb.MovePosition(rb.position + transform.right * speed * Time.fixedDeltaTime); 
 
-        if (Input.GetKey(KeyCode.S) && view.IsMine)
+        if (Input.GetKey(KeyCode.S))
             rb.MovePosition(rb.position - transform.forward * speed * Time.fixedDeltaTime); 
     }
     

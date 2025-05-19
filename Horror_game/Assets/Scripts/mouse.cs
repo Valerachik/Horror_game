@@ -1,6 +1,7 @@
 using UnityEngine;
+using Mirror;
 
-public class MouseLook : MonoBehaviour
+public class MouseLook : NetworkBehaviour
 {
     public float mouseSensitivity = 100f; // Чутливість миші
     public Transform playerBody; // Посилання на об'єкт персонажа
@@ -14,6 +15,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
+        if (!isLocalPlayer) return;
         // Зчитуємо рух мишки
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
