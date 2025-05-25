@@ -9,10 +9,14 @@ public class PickUpItem : MonoBehaviour
     public float distance = 15f;
     GameObject currentItem;
     bool canPickUp;
+    bool isHolding;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) PickUp();
-        if (Input.GetKeyDown(KeyCode.Q)) Drop();
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (isHolding) Drop();
+            else PickUp();
+        }
     }
 
     void PickUp()
@@ -31,6 +35,7 @@ public class PickUpItem : MonoBehaviour
                 currentItem.transform.localPosition = Vector3.zero;
                 currentItem.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
                 canPickUp = true;
+                isHolding = true;
             }
         }
     }
@@ -41,5 +46,6 @@ public class PickUpItem : MonoBehaviour
         currentItem.GetComponent<Rigidbody>().isKinematic = false;
         canPickUp = false;
         currentItem = null;
+        isHolding = false;
     }
 }
