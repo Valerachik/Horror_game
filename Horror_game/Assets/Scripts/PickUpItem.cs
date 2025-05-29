@@ -14,79 +14,54 @@ public class PickUpItem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (isHolding) Drop();
-            else PickUp();
+            PickUp();
+        }
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            Drop();
         }
     }
 
     void PickUp()
+{
+    RaycastHit hit;
+
+    if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, distance))
     {
-        RaycastHit hit;
-
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, distance))
+        if (hit.transform.tag == "Item")
         {
-            Debug.Log($"🎯 Влучено у: {hit.transform.name}");
+            if (canPickUp) Drop();
 
-            if (hit.transform.CompareTag("Item"))
-            {
-                if (canPickUp) Drop();
-
-                currentItem = hit.transform.gameObject;
-
-                Rigidbody rb = currentItem.GetComponent<Rigidbody>();
+            currentItem = hit.transform.gameObject;
+            Rigidbody rb = currentItem.GetComponent<Rigidbody>();
                 if (rb != null) rb.isKinematic = true;
 
                 Collider col = currentItem.GetComponent<Collider>();
                 if (col != null) col.enabled = false;
-
-                currentItem.transform.parent = transform;
-                currentItem.transform.localPosition = new Vector3(0, -1f, 1f);
-                currentItem.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
-
-                canPickUp = true;
-                isHolding = true;
-
-                isHoldingKey = currentItem.name.ToLower().Contains("key");
-                Debug.Log($"🗝️ Підібрано предмет: {currentItem.name}, isHoldingKey = {isHoldingKey}");
-            }
-            else
-            {
-                Debug.Log("❌ Об'єкт не має тега 'Item'");
-            }
-        }
-        else
-        {
-            Debug.Log("🔴 Raycast не влучив у предмет.");
+            currentItem.transform.parent = transform;
+            currentItem.transform.localPosition = Vector3.zero;
+            currentItem.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+            canPickUp = true;
+            isHolding = true;
+            isHoldingKey = currentItem.name.ToLower().Contains("key");
         }
     }
+}
 
-    void Drop()
-    {
-        if (currentItem != null)
-        {
-            if (currentItem.name.ToLower().Contains("key"))
-            {
-                Debug.Log("🗝️ Ключ не можна скинути автоматично");
-                return;
-            }
+   void Drop()
+{
+    currentItem.transform.parent = null;
+    Rigidbody rb = currentItem.GetComponent<Rigidbody>();
+    if (rb != null) rb.isKinematic = false;
 
-            Debug.Log("🔻 Скидаємо предмет: " + currentItem.name);
-
-            currentItem.transform.parent = null;
-
-            Rigidbody rb = currentItem.GetComponent<Rigidbody>();
-            if (rb != null) rb.isKinematic = false;
-
-            Collider col = currentItem.GetComponent<Collider>();
-            if (col != null) col.enabled = true;
-
-            canPickUp = false;
-            isHolding = false;
-            currentItem = null;
-        }
-    }
+    Collider col = currentItem.GetComponent<Collider>();
+    if (col != null) col.enabled = true;
+    canPickUp = false;
+    isHolding = false;
+    currentItem = null;
+}
 
     // Ось метод, який буде викликатися з іншого скрипта для знищення ключа
     public void DestroyHeldKey()
