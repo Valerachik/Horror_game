@@ -129,6 +129,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   speed: 5
+  crouch: {x: 0.8, y: 0.5, z: 0.8}
+  crouchpos: -0.5
 --- !u!54 &3974382376855711370
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -417,3 +419,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 5499196843978618798}
   distance: 15
+  currentItem: {fileID: 0}

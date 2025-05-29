@@ -10,11 +10,11 @@ public class movedoor : MonoBehaviour
 
     void Start()
     {
-        startRotation = transform.rotation;
+        startRotation = transform.localRotation;
         openRotation = Quaternion.Euler(0, openAngle, 0) * startRotation;
     }
 
-    void OnMouseDown() 
+    void OnMouseDown()
     {
         isOpen = !isOpen; // Перемикаємо стан дверей
     }
@@ -23,11 +23,11 @@ public class movedoor : MonoBehaviour
     {
         if (isOpen)
         {
-            transform.rotation = Quaternion.Lerp(transform.localRotation, openRotation, Time.deltaTime * speed);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, openRotation, Time.deltaTime * speed);
         }
         else
         {
-            transform.rotation = Quaternion.Lerp(transform.localRotation, startRotation, Time.deltaTime * speed);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, startRotation, Time.deltaTime * speed);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickUpItem : MonoBehaviour
 {
     public GameObject camera;               
-    public float distance = 15f;            
+    public float distance = 5f;            
     public GameObject currentItem;   // зробимо публічним, щоб ChestInteraction мав доступ
     bool canPickUp;
     bool isHolding;
