@@ -28,26 +28,49 @@ public class PickUpItem : MonoBehaviour
 {
     RaycastHit hit;
 
-    if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, distance))
-    {
-        if (hit.transform.tag == "Item")
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out hit, distance))
         {
-            if (canPickUp) Drop();
+            if (hit.transform.tag == "Item")
+            {
+                if (canPickUp) Drop();
 
-            currentItem = hit.transform.gameObject;
-            Rigidbody rb = currentItem.GetComponent<Rigidbody>();
+                currentItem = hit.transform.gameObject;
+                Rigidbody rb = currentItem.GetComponent<Rigidbody>();
                 if (rb != null) rb.isKinematic = true;
 
                 Collider col = currentItem.GetComponent<Collider>();
                 if (col != null) col.enabled = false;
-            currentItem.transform.parent = transform;
-            currentItem.transform.localPosition = Vector3.zero;
-            currentItem.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
-            canPickUp = true;
-            isHolding = true;
-            isHoldingKey = currentItem.name.ToLower().Contains("key");
+                currentItem.transform.parent = transform;
+                currentItem.transform.localPosition = Vector3.zero;
+                currentItem.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+                canPickUp = true;
+                isHolding = true;
+                isHoldingKey = currentItem.name.ToLower().Contains("key");
+            }
+            if (hit.transform.tag == "Note")
+            {
+                if (canPickUp) Drop();
+
+                currentItem = hit.transform.gameObject;
+                Rigidbody rb = currentItem.GetComponent<Rigidbody>();
+                if (rb != null) rb.isKinematic = true;
+
+                Collider col = currentItem.GetComponent<Collider>();
+                if (col != null) col.enabled = false;
+
+                currentItem.transform.parent = transform;
+
+                currentItem.transform.localPosition = new Vector3(-0.612f, 0.125f, -0.494f);
+                currentItem.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+                currentItem.transform.localScale = new Vector3(0.04f, 0.04f, 0.04f);
+   
+
+                canPickUp = true;
+                isHolding = true;
+                isHoldingKey = currentItem.name.ToLower().Contains("key");
+            }
+
         }
-    }
 }
 
    void Drop()
