@@ -83,13 +83,13 @@ public class SceneManager3D : MonoBehaviour
             case "Fridge":
                 return CurrentPhase >= GamePhase.Intro;
             case "BD":
-                return CurrentPhase == GamePhase.SearchingNoteBathroom;
+                return CurrentPhase >= GamePhase.SearchingNoteBathroom;
             case "TD":
-                return CurrentPhase == GamePhase.SearchingNoteBedroom;
+                return CurrentPhase >= GamePhase.SearchingNoteBedroom;
             case "BeD":
-                return CurrentPhase == GamePhase.SearchingNoteBedroom;
+                return CurrentPhase >= GamePhase.SearchingNoteBedroom;
             case "SD":
-                return CurrentPhase == GamePhase.SearchingNoteStoreroom;
+                return CurrentPhase >= GamePhase.SearchingNoteStoreroom;
             default:
                 return false; 
         }
@@ -97,6 +97,11 @@ public class SceneManager3D : MonoBehaviour
 
     private string GetPhaseTaskText(GamePhase phase)
     {
+
+        if (CurrentPhase == GamePhase.TheEnd)
+        {
+            CurrentPhase = GamePhase.Intro;
+        }
         switch (phase)
         {
             case GamePhase.Intro:
@@ -118,5 +123,6 @@ public class SceneManager3D : MonoBehaviour
             default:
                 return "";
         }
+
     }
 }

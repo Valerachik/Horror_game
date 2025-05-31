@@ -33,6 +33,7 @@ public class Bath_scream : MonoBehaviour
             screamAnimator.Play("ScreamAnim", 0, 1f);
             triggered = true;
         }
+     
         Destroy(gameObject);
     }
     public void OnScreamAnimationEnd()
@@ -41,6 +42,7 @@ public class Bath_scream : MonoBehaviour
         {
             screamerObject.SetActive(false);
         }
-        
+       
+
     }
 }
