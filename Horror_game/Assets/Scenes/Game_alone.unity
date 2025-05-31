@@ -5049,7 +5049,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fb67205c672fbb04d829783b9f771fc9, type: 3}
+    m_Font: {fileID: 12800000, guid: 4345225956e176043b2f73b9ee1b0f2b, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -7185,7 +7185,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fb67205c672fbb04d829783b9f771fc9, type: 3}
+    m_Font: {fileID: 12800000, guid: 4345225956e176043b2f73b9ee1b0f2b, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -14566,7 +14566,7 @@ MonoBehaviour:
   chestCover: {fileID: 1603952494}
   interactDistance: 5
   playerCamera: {fileID: 0}
-  pickUpItem: {fileID: 0}
+  pickUpItem: {fileID: 1106042575}
 --- !u!1001 &834542998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18093,6 +18093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capsule
       objectReference: {fileID: 0}
+    - target: {fileID: 3539382734197207322, guid: 7ab186114b1c066409e12e12bf95478b, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4064178486546671521, guid: 7ab186114b1c066409e12e12bf95478b, type: 3}
       propertyPath: sceneViewId
       value: 1
@@ -18142,6 +18146,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ab186114b1c066409e12e12bf95478b, type: 3}
+--- !u!114 &1106042575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8217323594277365230, guid: 7ab186114b1c066409e12e12bf95478b, type: 3}
+  m_PrefabInstance: {fileID: 1106042574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f597a4a012f24a45b272427196beee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1107275677
 GameObject:
   m_ObjectHideFlags: 0
@@ -22657,7 +22672,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fb67205c672fbb04d829783b9f771fc9, type: 3}
+    m_Font: {fileID: 12800000, guid: 4345225956e176043b2f73b9ee1b0f2b, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -24054,7 +24069,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3445f8970e8fa734c96cef5ab98ddd61, type: 3}
+    m_Font: {fileID: 12800000, guid: 4345225956e176043b2f73b9ee1b0f2b, type: 3}
     m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
@@ -31922,6 +31937,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 446274, guid: abc6c50a534b4b541a052aeadef59225, type: 3}
   m_PrefabInstance: {fileID: 1956644873}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &1962674586 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6993034872568851874, guid: 7ab186114b1c066409e12e12bf95478b, type: 3}
+  m_PrefabInstance: {fileID: 1106042574}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1962816073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32063,8 +32083,8 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 0.85
+  m_Camera: {fileID: 1962674586}
+  m_PlaneDistance: 0.82
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
