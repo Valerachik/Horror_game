@@ -28,7 +28,7 @@ public class movedoor : MonoBehaviour
 
     void OnMouseDown()
     {
-        // 🔒 Додаємо перевірку фази через SceneManager3D
+    
         if (!SceneManager3D.Instance.IsDoorUnlocked(doorId))
         {
             TextDisplayManager.Instance.ShowUniqueText("Locked_" + doorId, "Двері зачинені.");

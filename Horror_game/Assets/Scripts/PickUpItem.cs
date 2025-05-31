@@ -6,7 +6,7 @@ public class PickUpItem : MonoBehaviour
 {
     public GameObject camera;               
     public float distance = 5f;            
-    public GameObject currentItem;   // зробимо публічним, щоб ChestInteraction мав доступ
+    public GameObject currentItem;  
     bool canPickUp;
     bool isHolding;
 
@@ -86,7 +86,6 @@ public class PickUpItem : MonoBehaviour
     currentItem = null;
 }
 
-    // Ось метод, який буде викликатися з іншого скрипта для знищення ключа
     public void DestroyHeldKey()
     {
         if (currentItem != null && currentItem.name.ToLower().Contains("key"))

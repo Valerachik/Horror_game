@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class EndScreamer : MonoBehaviour
 {
-    public Transform lookTarget; // Об'єкт, у бік якого має повернутись гравець
-    public string menuSceneName = "Menu"; // Назва сцени меню
-
+    public Transform lookTarget; 
+    public string menuSceneName = "Menu";
+    public GamePhase nextPhase;
     private bool activated = false;
 
     private void OnMouseDown()
     {
-        if (activated) return; // Щоб не викликати кілька разів
+        if (activated) return;
         activated = true;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -26,13 +26,15 @@ public class EndScreamer : MonoBehaviour
                 player.transform.rotation = Quaternion.LookRotation(direction);
             }
 
-            // Завантаження сцени через 5 секунд
             Invoke(nameof(LoadMenuScene), 5f);
         }
     }
 
     private void LoadMenuScene()
     {
+        SceneManager3D.Instance.AdvancePhase(nextPhase);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(menuSceneName);
     }
 }
