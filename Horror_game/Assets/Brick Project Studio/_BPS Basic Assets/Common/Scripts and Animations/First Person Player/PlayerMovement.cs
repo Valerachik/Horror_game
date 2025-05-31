@@ -1,37 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-namespace SojaExiles
-
+public class PlayerMovement : MonoBehaviourPunCallbacks
 {
-    public class PlayerMovement : MonoBehaviour
+    public float moveSpeed = 5.0f;
+    public float runSpeed = 7.0f;
+
+    private CharacterController controller;
+    private bool isCrouching = false;
+
+    private void Start()
     {
+        if (!photonView.IsMine) return;
 
-        public CharacterController controller;
+        controller = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
-        public float speed = 5f;
-        public float gravity = -15f;
+    private void Update()
+    {
+        if (!photonView.IsMine) return;
+        
+        Move();
+    }
 
-        Vector3 velocity;
+    private void Move()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        bool isGrounded;
+        Vector3 moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
+        moveDirection.y -= 9.81f * Time.deltaTime;
 
-        // Update is called once per frame
-        void Update()
-        {
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        float speed = isRunning ? runSpeed : moveSpeed;
 
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
-
-            Vector3 move = transform.right * x + transform.forward * z;
-
-            controller.Move(move * speed * Time.deltaTime);
-
-            velocity.y += gravity * Time.deltaTime;
-
-            controller.Move(velocity * Time.deltaTime);
-
-        }
+        controller.Move(moveDirection * speed * Time.deltaTime);
     }
 }

@@ -1,36 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-namespace SojaExiles
-
+public class MouseLook : MonoBehaviourPunCallbacks
 {
-    public class MouseLook : MonoBehaviour
+    public float sensitivity = 2.0f;
+    public float maxYAngle = 80.0f; 
+    
+    private float rotationX = 0.0f;
+
+    private void Update()
     {
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
 
-        public float mouseXSensitivity = 100f;
-
-        public Transform playerBody;
-
-        float xRotation = 0f;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            float mouseX = Input.GetAxis("Mouse X") * mouseXSensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseXSensitivity * Time.deltaTime;
-
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            playerBody.Rotate(Vector3.up * mouseX);
-        }
+        transform.parent.Rotate(Vector3.up * mouseX * sensitivity);
+        
+        rotationX -= mouseY * sensitivity;
+        rotationX = Mathf.Clamp(rotationX, -maxYAngle, maxYAngle);
+        transform.localRotation = Quaternion.Euler(rotationX, 0.0f, 0.0f);
     }
 }
