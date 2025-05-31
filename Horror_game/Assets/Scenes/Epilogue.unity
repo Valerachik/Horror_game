@@ -10631,6 +10631,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7023165933335625951, guid: a73e9680647acdd40b863c4b6d3982b0, type: 3}
   m_PrefabInstance: {fileID: 1994641081}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1166200397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1166200399}
+  - component: {fileID: 1166200398}
+  m_Layer: 0
+  m_Name: Script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1166200398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166200397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ceaf2248c920340884e5f6cc2043a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: Menu
+--- !u!4 &1166200399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166200397}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -120.804634, y: 16.751432, z: 223.22919}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1169032552
 GameObject:
   m_ObjectHideFlags: 0
@@ -16131,6 +16176,8 @@ PlayableDirector:
     value: {fileID: 1360179930}
   - key: {fileID: 261886567535031695, guid: 9e2c45059bd95ce49904c84c476c0ee8, type: 2}
     value: {fileID: 1572752955}
+  - key: {fileID: 1741508704962794540, guid: 9e2c45059bd95ce49904c84c476c0ee8, type: 2}
+    value: {fileID: 1762433958}
   m_ExposedReferences:
     m_References:
     - 69281293bfdfbce48a6269b9ae824dd1: {fileID: 1360179930}
@@ -16149,16 +16196,31 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 6182c12ae5d823046a2b485fdcbd498d, type: 2}
+    - {fileID: 11400000, guid: d548e1bc8ec980b4b9621333a3dc11a4, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1762433954}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: 
+        - m_Target: {fileID: 1166200398}
+          m_TargetAssemblyTypeName: LoadNextSceneTrigger, Assembly-CSharp
+          m_MethodName: LoadNextScene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1166200398}
+          m_TargetAssemblyTypeName: LoadNextSceneTrigger, Assembly-CSharp
+          m_MethodName: LoadNextScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -19729,3 +19791,4 @@ SceneRoots:
   - {fileID: 2129044452}
   - {fileID: 598331931}
   - {fileID: 1572752956}
+  - {fileID: 1166200399}
