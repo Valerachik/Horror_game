@@ -8,7 +8,7 @@ public class Stuk_music : MonoBehaviour
     public AudioClip clip;
     private bool hasPlayed = false;
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (!hasPlayed && other.CompareTag("Player"))
         {

@@ -18,9 +18,9 @@ public enum GamePhase
 
 public class SceneManager3D : MonoBehaviour
 {
-    public static SceneManager3D Instance { get; private set; }
+    public static SceneManager3D Instance { get; set; }
 
-    public GamePhase CurrentPhase { get; private set; } = GamePhase.Intro;
+    public GamePhase CurrentPhase { get; set; } = GamePhase.Intro;
 
     private HashSet<string> completedActions = new HashSet<string>();
 
@@ -107,19 +107,19 @@ public class SceneManager3D : MonoBehaviour
             case GamePhase.Intro:
                 return "";
             case GamePhase.Sleep:
-                return "Вже так пізно, розберуся з цим завтра. І так багато сьогодні на мене навалилося";
+                return "пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
             case GamePhase.WakeUp:
                 return "";
             case GamePhase.SearchingNoteKitchen:
-                return "Знайди всі записки оглядаючи кімнати будинку";
+                return "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
             case GamePhase.SearchingNoteBathroom:
                 return "";
             case GamePhase.SearchingNoteBedroom:
-                return "Відображення не завжди твоє";
+                return "ВіпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ";
             case GamePhase.SearchingNoteStoreroom:
                 return "";
             case GamePhase.TheEnd:
-                return "\"ТИ НАСТУПНИЙ\"";
+                return "\"пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\"";
             default:
                 return "";
         }
