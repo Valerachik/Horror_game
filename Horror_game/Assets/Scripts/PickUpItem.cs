@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public class PickUpItem : MonoBehaviour
+public class PickUpItem : MonoBehaviourPunCallbacks
 {
     public GameObject camera;               
     public float distance = 5f;            
