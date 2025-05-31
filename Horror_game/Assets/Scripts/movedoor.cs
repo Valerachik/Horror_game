@@ -2,33 +2,40 @@ using UnityEngine;
 
 public class movedoor : MonoBehaviour
 {
-    public float openAngle = 90f; // Кут відкривання
-    public float speed = 2f; // Швидкість відкривання
+    public float openAngle = 90f;
+    public float speed = 2f;
     private bool isOpen = false;
     private Quaternion startRotation;
     private Quaternion openRotation;
+
     public GameObject screamObject;
     private Animator screamAnimator;
     private bool scremer = false;
+
+    public string doorId; 
 
     void Start()
     {
         startRotation = transform.localRotation;
         openRotation = Quaternion.Euler(0, openAngle, 0) * startRotation;
+
         if (screamObject != null)
         {
             screamObject.SetActive(false);
-        }
-        if (screamObject != null && !scremer)
-        {
             screamAnimator = screamObject.GetComponent<Animator>();
-            screamObject.SetActive(false);
         }
     }
 
     void OnMouseDown()
     {
-        isOpen = !isOpen; // Перемикаємо стан дверей
+        // 🔒 Додаємо перевірку фази через SceneManager3D
+        if (!SceneManager3D.Instance.IsDoorUnlocked(doorId))
+        {
+            TextDisplayManager.Instance.ShowUniqueText("Locked_" + doorId, "Двері зачинені.");
+            return;
+        }
+
+        isOpen = !isOpen;
 
         if (CompareTag("door_trig") && !scremer)
         {
@@ -47,6 +54,7 @@ public class movedoor : MonoBehaviour
             transform.localRotation = Quaternion.Lerp(transform.localRotation, startRotation, Time.deltaTime * speed);
         }
     }
+
     void ShowScreamer()
     {
         if (screamObject != null)
@@ -56,6 +64,7 @@ public class movedoor : MonoBehaviour
             scremer = true;
         }
     }
+
     public void OnScreamAnimationEnd()
     {
         if (screamObject != null)
