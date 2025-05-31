@@ -9,7 +9,7 @@ public class TriggerNote : MonoBehaviour
 
     private bool triggered = false;
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (triggered || !other.CompareTag("Player")) return;
 
